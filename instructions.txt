@@ -1,0 +1,4 @@
+1. Add  (StatsInspect.lua) to your server/scripts/custom folder
+2. Add  (MenuActive.lua) inside your server/scripts/menu folder
+3. Edit (customScripts.lua) and add ActivatePlayer = require("custom.StatsInspect") 
+4. Edit (config.lua) and look for config.menuHelperFiles add in "MenuActive" in the list there
