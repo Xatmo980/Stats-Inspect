@@ -1,5 +1,5 @@
 # Stats-Inspect
-Stats Inspection and Resurrection Script for TESMP3<br><br>
+Stats Inspection and Resurrection Script for TES3MP<br><br>
 A Variation of ActivePlayer from TFNServers Scripts<br>
 Credits @rickoff and those who created the base scripts<br><br>
 
