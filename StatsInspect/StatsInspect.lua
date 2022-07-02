@@ -31,11 +31,21 @@ ActivatePlayer.InspectPlayer = function(eventStatus, pid, cellDescription, objec
                         local player = Players[PlayerPid]	
 			local IsAlive = tes3mp.GetHealthCurrent(PlayerPid)	
 			if IsAlive ~= 0 then
+                           local MajN = {}
+                           local MinN = {}
+                           local MaBase = {}
+                           local MiBase = {}
 	                   local LvL = player.data.stats.level
                            local Progress = player.data.stats.levelProgress
                            local cHP = math.floor(player.data.stats.healthCurrent)
                            local bHP = math.floor(player.data.stats.healthBase)
-                           local StatsList = "Level " .. LvL .. "\n" .. "Level Progress " .. Progress .. "\n" .. "HP " .. cHP .. "/" .. bHP
+                                 for i=0,4 do
+                                     MajN[i] = tes3mp.GetSkillName(tes3mp.GetClassMajorSkill(PlayerPid, i))
+                                     MaBase[i] = tes3mp.GetSkillBase(PlayerPid, tes3mp.GetClassMajorSkill(PlayerPid, i))
+                                     MinN[i] = tes3mp.GetSkillName(tes3mp.GetClassMinorSkill(PlayerPid, i))
+                                     MiBase[i] = tes3mp.GetSkillBase(PlayerPid, tes3mp.GetClassMinorSkill(PlayerPid, i))
+                                 end
+                           local StatsList = "Level " .. LvL .. "\n" .. "Level Progress " .. Progress .. "\n" .. "HP " .. cHP .. "/" .. bHP .. "\n\n" .. "[MajorSkills]" .. "\n" .. MajN[0] .. "(" .. MaBase[0] .. ")" .. "\n" .. MajN[1] .. "(" .. MaBase[1] .. ")" .. "\n" .. MajN[2] .. "(" .. MaBase[2] .. ")" .. "\n" .. MajN[3] .. "(" .. MaBase[3] .. ")" .. "\n" .. MajN[4] .. "(" .. MaBase[4] .. "\n\n" .. "[MinorSkills]" .. "\n" .. MinN[0] .. "(" .. MiBase[0] .. ")" ..  "\n" .. MinN[1].. "(" .. MiBase[1] .. ")" .. "\n" .. MinN[2].. "(" .. MiBase[2] .. ")" .. "\n" .. MinN[3].. "(" .. MiBase[3] .. ")" .. "\n" .. MinN[4] .. "(" .. MiBase[4] .. ")"
                            tes3mp.CustomMessageBox(pid, GuI, StatsList, "Ok")
                         else
 			   Players[pid].currentCustomMenu = "resurrect player"
